@@ -1,0 +1,11 @@
+[[commands]]
+name = "browser"
+description = "otwiera przeglądarkę"
+action_type = "launch"
+action_value = "firefox"
+
+[[commands]]
+name = "mail"
+description = "wysyła klawisze"
+action_type = "keystrokes"
+action_value = "ctrl+shift+m"
