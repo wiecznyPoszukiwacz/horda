@@ -1,6 +1,7 @@
 use crate::{action::Action, config::CommandConfig};
 pub struct Command {
     pub name: String,
+    #[allow(dead_code)]
     pub description: String,
     pub(crate) action: Action,
 }
