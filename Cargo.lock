@@ -1463,6 +1463,7 @@ dependencies = [
  "rdev",
  "serde",
  "toml",
+ "x11rb",
 ]
 
 [[package]]

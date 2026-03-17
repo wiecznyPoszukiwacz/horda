@@ -1,7 +1,4 @@
 use crate::{action::Action, config::CommandConfig};
-pub fn find_command<'a>(commands: &'a Vec<Command>, name: &str) -> Option<&'a Command> {
-    commands.iter().find(|cmd| cmd.name == name)
-}
 pub struct Command {
     pub name: String,
     pub description: String,

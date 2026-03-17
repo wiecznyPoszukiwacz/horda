@@ -9,3 +9,4 @@ egui = "0.33.3"
 rdev = "0.5.3"
 serde = { version = "1.0.228", features = ["derive"] }
 toml = "1.0.6"
+x11rb = { version = "0.13.2", features = ["xtest"] }

@@ -39,13 +39,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     eframe::run_native(
         "horda",
         options,
-        Box::new(|_cc| {
-            Ok(Box::new(horda::HordaApp {
-                hotkey_receiver: receiver,
-                input: "".to_string(),
-                visible: false,
-            }))
-        }),
+        Box::new(|_cc| Ok(Box::new(HordaApp::new(receiver, commands)))),
     )?;
 
     Ok(())
