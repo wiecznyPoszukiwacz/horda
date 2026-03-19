@@ -18,11 +18,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let commands: Vec<Command> = config.commands.into_iter().map(Command::from).collect();
 
-    for cmd in &commands {
-        println!("--- {}", cmd.name);
-        println!("{}", cmd.action.describe());
-    }
-
     let (sender, receiver) = mpsc::channel();
 
     std::thread::spawn(move || start_listener(sender));
