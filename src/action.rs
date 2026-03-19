@@ -11,6 +11,7 @@ pub enum Action {
 }
 
 impl Action {
+    #[allow(dead_code)]
     pub fn describe(&self) -> String {
         match self {
             Action::Launch(program) => format!("uruchom {program}"),
