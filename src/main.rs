@@ -13,7 +13,7 @@ use crate::{
 use std::sync::mpsc;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let config_string = load_config("config.toml")?;
+    let config_string = load_config()?;
     let config: Config = toml::from_str(&config_string)?;
 
     let commands: Vec<Command> = config.commands.into_iter().map(Command::from).collect();
