@@ -1,12 +1,12 @@
 [package]
 name = "horda"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2024"
 
 [dependencies]
 eframe = "0.33.3"
 egui = "0.33.3"
-rdev = "0.5.3"
+rdev = { version = "0.5.3", features = ["unstable_grab"] }
 serde = { version = "1.0.228", features = ["derive"] }
 toml = "1.0.6"
 x11rb = { version = "0.13.2", features = ["xtest"] }
