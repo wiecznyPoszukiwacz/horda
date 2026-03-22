@@ -1,5 +1,5 @@
 use serde::Deserialize;
-pub fn load_config() -> Result<String, std::io::Error> {
+pub fn load_config() -> Result<(String, String), std::io::Error> {
     let homedir = std::env::home_dir().ok_or(std::io::Error::new(
         std::io::ErrorKind::NotFound,
         "home dir not found",
@@ -10,8 +10,9 @@ pub fn load_config() -> Result<String, std::io::Error> {
     ))?;
 
     let config_path = format!("{homedir}/.config/horda/horda.toml");
+    let content = std::fs::read_to_string(&config_path)?;
 
-    std::fs::read_to_string(config_path)
+    Ok((content, config_path))
 }
 
 #[derive(Deserialize)]
