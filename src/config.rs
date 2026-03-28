@@ -26,4 +26,6 @@ pub struct CommandConfig {
     pub(crate) description: String,
     pub(crate) action_type: String,
     pub(crate) action_value: String,
+    #[serde(default)]
+    pub(crate) action_args: Vec<String>,
 }

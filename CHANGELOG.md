@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.3.1] - 2026-03-28
+
+### Added
+- Support for command arguments via `action_args` field in config (e.g. `action_args = ["--flag", "value"]`)
+
 ## [0.3.0] - 2026-03-22
 
 ### Added

@@ -6,7 +6,7 @@ use x11rb::protocol::xproto::{
 use x11rb::protocol::xtest::ConnectionExt as XTestExt;
 use x11rb::rust_connection::RustConnection;
 pub enum Action {
-    Launch(String),
+    Launch(String, Vec<String>),
     Keystrokes(String),
 }
 
@@ -14,7 +14,7 @@ impl Action {
     #[allow(dead_code)]
     pub fn describe(&self) -> String {
         match self {
-            Action::Launch(program) => format!("uruchom {program}"),
+            Action::Launch(program, _) => format!("uruchom {program}"),
             Action::Keystrokes(keystrokes) => format!("wysyła klawisze {keystrokes}"),
         }
     }
@@ -23,8 +23,8 @@ impl Action {
 impl Action {
     pub fn execute(&self, previous_window_id: u32, x11: &x11rb::rust_connection::RustConnection) {
         match self {
-            Action::Launch(program) => {
-                std::process::Command::new(program).spawn().ok();
+            Action::Launch(program, args) => {
+                std::process::Command::new(program).args(args).spawn().ok();
             }
             Action::Keystrokes(keys) => send_keystrokes(keys, x11, previous_window_id),
         };

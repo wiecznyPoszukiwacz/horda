@@ -8,7 +8,7 @@ pub struct Command {
 impl From<CommandConfig> for Command {
     fn from(cfg: CommandConfig) -> Self {
         let action = match cfg.action_type.as_str() {
-            "launch" => Action::Launch(cfg.action_value),
+            "launch" => Action::Launch(cfg.action_value, cfg.action_args),
             "keystrokes" => Action::Keystrokes(cfg.action_value),
             _ => panic!("nieznany typ"),
         };
