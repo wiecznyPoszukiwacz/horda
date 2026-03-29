@@ -1,3 +1,4 @@
+use std::os::unix::process::CommandExt;
 use std::time::Duration;
 use x11rb::connection::Connection;
 use x11rb::protocol::xproto::{
@@ -24,7 +25,12 @@ impl Action {
     pub fn execute(&self, previous_window_id: u32, x11: &x11rb::rust_connection::RustConnection) {
         match self {
             Action::Launch(program, args) => {
-                std::process::Command::new(program).args(args).spawn().ok();
+                // Detach child from horda's process group so it survives horda restart
+                std::process::Command::new(program)
+                    .args(args)
+                    .process_group(0)
+                    .spawn()
+                    .ok();
             }
             Action::Keystrokes(keys) => send_keystrokes(keys, x11, previous_window_id),
         };

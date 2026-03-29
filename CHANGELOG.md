@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.3.2] - 2026-03-29
+
+### Fixed
+- Launched apps no longer crash when horda is restarted — child processes are now detached into their own process group (`process_group(0)`)
+
 ## [0.3.1] - 2026-03-28
 
 ### Added
